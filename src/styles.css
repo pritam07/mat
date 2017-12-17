@@ -1,1 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+.text-center {
+    text-align: center;
+}
+.btn.btn-type-one {
+    background-color: #4b5265;
+}
+.inner-body-wrap {
+    background-color: #fff;
+    width: 100%;    
+    padding: 10px 0px 10px 0px;
+}
+.body-header {   
+    padding-bottom: 20px;
+}
+h1.al-title {
+    font-size: 35px;
+    margin-top: 10px;
+    font-weight: 600;
+    margin-bottom: 0px; 
+}
+nav a  {
+    color: #191919 !important;
+}
+.heading-size-type-one {
+    color: #ed6d00;
+    font-weight: 600;
+    font-size: 30px;
+}

@@ -1,0 +1,67 @@
+<router-outlet></router-outlet>
+hff<div class="body-wrapper-1">
+    <section class="main-navbar common-nav">
+        <nav>
+          <div class="nav-wrapper">
+            <div class="humberg">
+                    <a href="javascript:void(0);" (click)="isVmenuOpen = !isVmenuOpen"><i class="material-icons">reorder</i></a>
+            </div>  
+            <a href="javascript:void(0);" class="brand-logo"><h4 class="heading-size-type-one">Digital Apraisal System</h4></a>
+            <!-- <ul id="nav-mobile" class="right hide-on-med-and-down"> -->
+                    <div class="right-align-item">
+                            <a class="home-icon">Hi Admin User</a>
+                            <i class="material-icons log-out" routerLink="/login">power_settings_new</i>
+                            <!-- <button class="color-black" mat-icon-button [matMenuTriggerFor]="menu">
+                              <mat-icon>more_vert</mat-icon>
+                            </button>
+                            <mat-menu #menu="matMenu">
+                              <button mat-menu-item (click)="logout()">
+                                <mat-icon>settings_power</mat-icon>
+                                <span>Logout</span>
+                              </button>
+                            </mat-menu> -->
+                          </div>
+              <!-- <li><a href="sass.html">Sass</a></li>
+              <li><a href="badges.html">Components</a></li>
+              <li><a href="collapsible.html">JavaScript</a></li> -->
+            <!-- </ul> -->
+          </div>
+        </nav>
+        </section>
+        <div class="wrapper-block">
+        <section class="verticalmenu" *ngIf="isVmenuOpen">
+                <ul class="v-menu collection">
+                        <li class="collection-item avatar"><a class="waves-effect" routerLink="/record" routerLinkActive="active">
+                            <i class="material-icons">record_voice_over</i>
+                          <span class="title" >Record</span></a> </li>
+                          <li class="collection-item avatar"><a class="waves-effect" routerLink="/comment" routerLinkActive="active">
+                            <i class="material-icons">comment</i>
+                          <span class="title" >Comment</span></a> </li>
+                          <li class="collection-item avatar"><a class="waves-effect" routerLink="/report" routerLinkActive="active">
+                            <i class="material-icons">library_books</i>
+                            <span class="title">Report</span>
+                          </a> </li>
+                        <!-- <li class="collection-item avatar"><a class="waves-effect" routerLink="/tracking" routerLinkActive="active">
+                          <i class="material-icons">track_changes</i>
+                          <span class="title">Track Container</span>
+                        </a> </li>
+                        <li class="collection-item avatar" *ngIf="userRole == 'SuperUser'"><a class="waves-effect" routerLink="/add-filter-image" routerLinkActive="active">
+                          <i class="material-icons">filter_list</i>
+                          <span class="title">Add Filter Image</span>
+                        </a> </li>
+                        <li class="collection-item avatar" *ngIf="userRole == 'SuperUser'"><a class="waves-effect" routerLink="/system-status" routerLinkActive="active">
+                          <i class="material-icons">ac_unit</i>
+                          <span class="title">System Status</span>
+                        </a> </li> -->
+                  
+                  
+                  
+                      </ul>
+        </section>    
+        <section class="inner-body common-body" [ngClass]="isVmenuOpen ? '': 'vMenuOpen'">
+            
+                <router-outlet></router-outlet>
+            
+        </section>
+    </div>
+    </div>
