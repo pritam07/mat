@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./common.component.css']
 })
 export class CommonComponent implements OnInit {
-
+  isVmenuOpen: boolean = true;
   constructor() { }
 
   ngOnInit() {
