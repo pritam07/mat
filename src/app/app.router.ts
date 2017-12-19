@@ -6,7 +6,7 @@ import {CommonComponent} from './common/common.component';
 
 export const router: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full'},
-    { path: '', component: HomeComponent },
+    { path: 'home', component: HomeComponent },
     { path: '', component: CommonComponent, 
     children: [
     // {

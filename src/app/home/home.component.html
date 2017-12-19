@@ -1,15 +1,40 @@
 <div class="body-wrapper-1">
   <section class="main-navbar common-nav">
       <nav>
-        <div class="nav-wrapper">
+        <div class="nav-wrapper nav-form">
           <div class="humberg">
                   <a href="javascript:void(0);" (click)="isVmenuOpen = !isVmenuOpen"><i class="material-icons">reorder</i></a>
           </div>  
           <a href="javascript:void(0);" class="brand-logo"><h4 class="heading-size-type-one">Mtrimony</h4></a>
           <!-- <ul id="nav-mobile" class="right hide-on-med-and-down"> -->
                   <div class="right-align-item">
-                          <a class="home-icon">Hi Admin User</a>
-                          <i class="material-icons log-out" routerLink="/login">power_settings_new</i>
+                      <form class="col col xl12 l12 m12 s12" novalidate>
+                          <div class="row">
+                            <mz-input-container class="col xl4 l4 m4 s4">
+                              <input class="validate" mz-input mz-validation required
+                              id="input-firstname"
+                              formControlName="email"
+                              type="text"
+                              [errorMessageResource]="errorMessageResources.general"
+                              [label]="'First Name'">
+                              
+                            </mz-input-container>
+                            <mz-input-container class="col xl4 l4 m4 s4">
+                              <input class="validate" mz-input mz-validation required
+                              id="input-password"
+                              formControlName="password"
+                              type="password"
+                              [errorMessageResource]="errorMessageResources.general"
+                              [label]="'Password'">
+                              <label for="last_name">Password</label>
+                            </mz-input-container>
+                            <div class="col xl4 l4 m4 s4">
+                            <button class="btn waves-effect waves-light purple" type="submit" name="action">Submit
+                                <i class="material-icons right">send</i>
+                              </button>
+                            </div>
+                    </div>
+                    </form>
                           <!-- <button class="color-black" mat-icon-button [matMenuTriggerFor]="menu">
                             <mat-icon>more_vert</mat-icon>
                           </button>
