@@ -8,7 +8,7 @@
           <a href="javascript:void(0);" class="brand-logo"><h4 class="heading-size-type-one">Mtrimony</h4></a>
           <!-- <ul id="nav-mobile" class="right hide-on-med-and-down"> -->
                   <div class="right-align-item">
-                      <form class="col col xl12 l12 m12 s12" novalidate>
+                      <form class="col col xl12 l12 m12 s12" [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value, loginForm.valid)" novalidate>
                           <div class="row">
                             <mz-input-container class="col xl4 l4 m4 s4">
                               <input class="validate" mz-input mz-validation required
@@ -83,7 +83,174 @@
                     </ul>
       </section>    
       <section class="inner-body common-body" [ngClass]="isVmenuOpen ? '': 'vMenuOpen'">
-          
+        <header class="bg-primary text-white">
+          <div class="text-center home-bg">
+           <div class="container">
+             <div class="home-form-container">
+               <div class="home-register-box">
+                <form *ngIf="masterDataList" class="f_left_full_width" [formGroup]="registerForm" (ngSubmit)="Submit(registerForm.value, registerForm.valid)" novalidate > 
+                  <div class="row home_register_row">  
+                      <mz-select-container class="col s12 m6 l6 xl6">
+                          <select mz-select mz-validation required
+                            id="r-select-createdby"
+                            [label]="'Profile Created By'"
+                            [placeholder]="'Created By'" formControlName="createdby"  [errorMessageResource]="errorMessageResources.general">
+                            
+                              <option *ngFor="let created of masterDataList.createdby" [ngValue]="created">{{created.viewValue}}</option>
+                             
+                           
+                          </select>
+                        </mz-select-container>
+                  <mz-input-container class="col s12 m6 l6 xl6">
+                    <input mz-input mz-validation required
+                      id="r-input-fullname"
+                      formControlName="fullname"
+                      type="text"
+                      [errorMessageResource]="errorMessageResources.general"
+                      [label]="'Full Name'" />
+                  </mz-input-container>
+                  <mz-select-container class="col s12 m6 l4 xl4">
+                      <select mz-select mz-validation required
+                        id="r-select-maritial"
+                        [label]="'Marital Status'"
+                        [placeholder]="'Marital Status'" formControlName="maritialstatus"  [errorMessageResource]="errorMessageResources.general">
+                        
+                          <option *ngFor="let mstatus of masterDataList.maritialstatus" [ngValue]="mstatus">{{mstatus.viewValue}}</option>
+        
+                       
+                      </select>
+                    </mz-select-container>
+                    <mz-select-container class="col s12 m6 l4 xl4">
+                        <select mz-select mz-validation required
+                          id="r-select-gender"
+                          [label]="'Gender'"
+                          [placeholder]="'Gender'" formControlName="gender" [errorMessageResource]="errorMessageResources.general">                 
+                          <option *ngFor="let gender of masterDataList.gender" [ngValue]="gender">{{gender.viewValue}}</option>
+                           
+                         
+                        </select>
+                      </mz-select-container>              
+                      <div class="col s12 m6 l4 xl4 home-register-datepicker">
+                          <md2-datepicker [max]="maxDate" #birthday formControlName="dob"></md2-datepicker>                  
+                      </div>  
+                      <mz-select-container class="col s12 m6 l4 xl4 r-country-clear">
+                          <select mz-select mz-validation required
+                            id="r-select-country"
+                            [label]="'Country'"
+                            [placeholder]="'Country'" formControlName="country" [errorMessageResource]="errorMessageResources.general">
+                           
+                              <option>Option 1</option>
+                              <option>Option 2</option>                 
+                           
+                              <option>Option 3</option>
+                           
+                          </select>
+                        </mz-select-container>
+        
+                        <mz-select-container class="col s12 m6 l4 xl4">
+                            <select mz-select mz-validation required
+                              id="r-select-state"
+                              [label]="'State'"
+                              [placeholder]="'State'" formControlName="state"  [errorMessageResource]="errorMessageResources.general">
+                             
+                                <option>Option 1</option>
+                                <option>Option 2</option>                 
+                             
+                                <option>Option 3</option>
+                             
+                            </select>
+                          </mz-select-container>
+        
+                          <mz-select-container class="col s12 m6 l4 xl4">
+                              <select mz-select mz-validation required
+                                id="r-select-city"
+                                [label]="'City'"
+                                [placeholder]="'City'"  formControlName="city" [errorMessageResource]="errorMessageResources.general" >
+                               
+                                  <option>Option 1</option>
+                                  <option>Option 2</option>                 
+                               
+                                  <option>Option 3</option>
+                               
+                              </select>
+                            </mz-select-container>
+                            
+                              <mz-select-container class="col s12 m6 l4 xl4">
+                                  <select mz-select mz-validation required
+                                    id="r-select-religion"
+                                    [label]="'Religion'"
+                                    [placeholder]="'Religion'"   formControlName="religion"  [errorMessageResource]="errorMessageResources.general">
+                                   
+                                      <option>Option 1</option>
+                                      <option>Option 2</option>                 
+                                   
+                                      <option>Option 3</option>
+                                   
+                                  </select>
+                                </mz-select-container>
+              
+                                <mz-select-container class="col s12 m6 l4 xl4">
+                                    <select mz-select mz-validation required
+                                      id="r-select-tongue"
+                                      [label]="'Mother Tongue'"
+                                      [placeholder]="'Mother Tongue'"  formControlName="mothertongue"  [errorMessageResource]="errorMessageResources.general">
+                                     
+                                        <option>Option 1</option>
+                                        <option>Option 2</option>                 
+                                     
+                                        <option>Option 3</option>
+                                     
+                                    </select>
+                                  </mz-select-container>
+                                  <mz-select-container class="col s12 m6 l4 xl4">
+                                      <select mz-select mz-validation required
+                                        id="r-select-caste"
+                                        [label]="'Caste'"
+                                        [placeholder]="'Caste'" formControlName="caste"  [errorMessageResource]="errorMessageResources.general">
+                                       
+                                          <option>Option 1</option>
+                                          <option>Option 2</option>                 
+                                       
+                                          <option>Option 3</option>
+                                       
+                                      </select>
+                                    </mz-select-container>
+                    
+                                    <mz-input-container class="col s12 m6 l6 xl6">
+                                        <input mz-input mz-validation required
+                                          id="r-input-email"                                 
+                                          type="email"
+                                          [errorMessageResource]="errorMessageResources.firstName"
+                                          [label]="'Email Id'" formControlName='email'/>
+                                      </mz-input-container>    
+                                      <mz-input-container class="col s12 m6 l6 xl6">
+                                          <input mz-input mz-validation required
+                                            id="r-input-mobile"                                 
+                                            type="text"
+                                            [errorMessageResource]="errorMessageResources.firstName"
+                                            [label]="'Mobile Number'" formControlName='mobile'/> 
+                                        </mz-input-container>                  
+                  <mz-input-container class="col s12 m6 l6 xl6">
+                    <input mz-input mz-validation required
+                      id="r-input-password"
+                      formControlName="password"
+                      type="password"
+                      [errorMessageResource]="errorMessageResources.general"
+                      [label]="'Password'" />
+                  </mz-input-container>
+        
+        
+                  <div class="home-register-submit-btn flex-center">
+                        <button [disabled]="!registerForm.valid"  class="" md-raised-button color="warn">Submit</button>
+                  </div>      
+                      </div> 
+                
+                </form> 
+            </div>
+            </div>
+           </div>
+          </div>
+        </header>
              
           
       </section>
