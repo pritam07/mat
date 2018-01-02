@@ -28,8 +28,8 @@ export class ApiService {
   showError() {
     this.toastService.show('Server is not responding', 4000, 'black');  
   }
-  getFireStoeList(path){
+  getFireStoeList(collectionPath, documentPath?){
     this.progressService.start(); 
-    return this.afs.collection(path).valueChanges().map(data => data).catch(err => { return Observable.of(this.showError());});
+    return documentPath ? this.afs.collection(collectionPath).doc(documentPath).valueChanges().map(data => data).catch(err => { return Observable.of(this.showError());}) : this.afs.collection(collectionPath).valueChanges().map(data => data).catch(err => { return Observable.of(this.showError());});
   }
 }

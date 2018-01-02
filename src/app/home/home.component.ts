@@ -14,7 +14,7 @@ import {NgProgress } from '@ngx-progressbar/core';
 export class HomeComponent implements OnInit {
   loginForm: FormGroup; 
   registerForm: FormGroup;
-  masterDataList: any; 
+  masterDataList: any = {}; 
   errorMessageResources: any;
   constructor(private formBuilder: FormBuilder, public commonService: CommonService,
     private router: Router, public apiService: ApiService,
@@ -29,12 +29,30 @@ export class HomeComponent implements OnInit {
     this.loginForm = this.commonService.buildLoginFormService(); 
   }
   buildRegisterForm() {
-    this.registerForm =  this.commonService.buildRegisterFormService(); 
+    this.registerForm = this.commonService.buildRegisterFormService(); 
   }
   getMasterData() {
     this.apiService.getFireStoeList('/masterdetails').subscribe(data => {
       this.progressService.done(); 
-      this.masterDataList = data;    
+      let copyData: any = data;
+      
+      console.log('1'+1);
+     
+
+      console.log(copyData.filter(val => val.profilecreatedby));
+      if(copyData.filter(val => val.profilecreatedby)) {
+        this.masterDataList.profilecreatedby = copyData.filter(val => val.profilecreatedby)[0].profilecreatedby;   
+      }
+      if(copyData.filter(val => val.religion)) {
+        this.masterDataList.religion = copyData.filter(val => val.religion)[0].religion;   
+      }
+      if(copyData.filter(val => val.mothertongue)) {
+        this.masterDataList.mothertongue = copyData.filter(val => val.mothertongue)[0].mothertongue;   
+      }
+      if(copyData.filter(val => val.gender)) {
+        this.masterDataList.gender = copyData.filter(val => val.gender)[0].gender;   
+      }
+        
       console.log(JSON.stringify(this.masterDataList));
     },    
     error => {     

@@ -10,7 +10,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import {AngularFireDatabaseModule} from 'angularfire2/database'
 import { appRouter } from './app.router';
-import { MaterializeModule } from 'ng2-materialize';
+import { MzButtonModule, MzInputModule, MzValidationModule, MzSelectModule, MzToastModule } from 'ng2-materialize';
 import { Md2Module }  from 'md2'; 
 import { environment } from '../environments/environment';
 import { HomeComponent } from './home/home.component';
@@ -43,7 +43,7 @@ export const firebaseConfig = {
     AngularFirestoreModule,
     AngularFireAuthModule,
     AngularFireDatabaseModule,
-    MaterializeModule,
+    [MzButtonModule, MzInputModule, MzValidationModule, MzSelectModule, MzToastModule],
     Md2Module,
     NgProgressModule.forRoot(),
     appRouter,

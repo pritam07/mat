@@ -87,21 +87,33 @@
           <div class="text-center home-bg">
            <div class="container">
              <div class="home-form-container">
-               <div class="home-register-box">
-                <form *ngIf="masterDataList" class="f_left_full_width" [formGroup]="registerForm" (ngSubmit)="Submit(registerForm.value, registerForm.valid)" novalidate > 
-                  <div class="row home_register_row">  
-                      <mz-select-container class="col s12 m6 l6 xl6">
-                          <select mz-select mz-validation required
-                            id="r-select-createdby"
-                            [label]="'Profile Created By'"
-                            [placeholder]="'Created By'" formControlName="createdby"  [errorMessageResource]="errorMessageResources.general">
-                            
-                              <option *ngFor="let created of masterDataList.createdby" [ngValue]="created">{{created.viewValue}}</option>
+               <div class="home-register-box" *ngIf="masterDataList">
+                 {{masterDataList.profilecreatedby | json}}
+                <form  class="f_left_full_width" [formGroup]="registerForm" (ngSubmit)="Submit(registerForm.value, registerForm.valid)" novalidate > 
+                  <div class="row home_register_row">    
+                      <mz-select-container>
+                          <select mz-select formControlName="createdby"
+                            id="options-select"
+                            [label]="'Label'"
+                            [placeholder]="'Placeholder'"
+                          >
+                            <optgroup label="Group 1">
+                              <option data-icon="assets/select-icon-1.jpg" class="left circle">Option 1</option>
+                              <option data-icon="assets/select-icon-2.jpg" class="left circle">Option 2</option>
+                            </optgroup>
+                            <optgroup label="Group 2">
+                              <option data-icon="assets/select-icon-3.jpg" class="left circle">Option 3</option>
+                            </optgroup>
+                          </select>
+                        </mz-select-container>                  
+                      <!-- <mz-select-container>
+                          <select mz-select id="r-select-createdby" [label]="'Profile Created By'"  [placeholder]="'Created By'" formControlName="createdby">                            
+                              <option *ngFor="let created of masterDataList.profilecreatedby" [ngValue]="created.value">{{created.viewValue}}</option>
                              
                            
                           </select>
-                        </mz-select-container>
-                  <mz-input-container class="col s12 m6 l6 xl6">
+                        </mz-select-container> -->
+                  <!-- <mz-input-container class="col s12 m6 l6 xl6">
                     <input mz-input mz-validation required
                       id="r-input-fullname"
                       formControlName="fullname"
@@ -237,7 +249,7 @@
                       type="password"
                       [errorMessageResource]="errorMessageResources.general"
                       [label]="'Password'" />
-                  </mz-input-container>
+                  </mz-input-container> -->
         
         
                   <div class="home-register-submit-btn flex-center">
