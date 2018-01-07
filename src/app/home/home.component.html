@@ -89,10 +89,10 @@
           <div class="text-center home-bg">
            <div class="container">
              <div class="home-form-container">
-               <div class="home-register-box" *ngIf="masterDataList && registerForm">                
+               <div class="home-register-box" *ngIf="masterDataList && masterDataList.profilecreatedby  && registerForm">                
                 <form  class="f_left_full_width" [formGroup]="registerForm" (ngSubmit)="Submit(registerForm.value, registerForm.valid)" novalidate > 
                   <div class="row home_register_row">    
-                    <h3 *ngIf="message">{{message}}</h3>
+                    <h3 *ngIf="message">{{message}}</h3>                   
                     <mat-form-field>
                       <mat-select placeholder="Favorite food">
                           <mat-option *ngFor="let list of masterDataList.profilecreatedby" [value]="list.value">
