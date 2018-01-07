@@ -16,11 +16,13 @@ export class HomeComponent implements OnInit {
   registerForm: FormGroup;
   masterDataList: any = {}; 
   errorMessageResources: any;
+  message: string;
   constructor(private formBuilder: FormBuilder, public commonService: CommonService,
     private router: Router, public apiService: ApiService,
     public progressService: NgProgress) { }
   ngOnInit() {
     this.errorMessageResources = AppConstant.errorMessageResources;
+    //this.initService();
     this.buildLoginForm();
     this.getMasterData();
     this.buildRegisterForm();
@@ -37,8 +39,6 @@ export class HomeComponent implements OnInit {
       let copyData: any = data;
       
       console.log('1'+1);
-     
-
       console.log(copyData.filter(val => val.profilecreatedby));
       if(copyData.filter(val => val.profilecreatedby)) {
         this.masterDataList.profilecreatedby = copyData.filter(val => val.profilecreatedby)[0].profilecreatedby;   
@@ -74,5 +74,11 @@ export class HomeComponent implements OnInit {
     });
     }
    
+  }
+  initService() {
+    this.apiService.httpGetRequest('http://localhost:3000/users').subscribe(data => {
+      this.message = JSON.parse(data._body).message;
+      console.log(JSON.parse(data._body).message);
+    })
   }
 }

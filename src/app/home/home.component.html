@@ -28,6 +28,8 @@
                               [label]="'Password'">
                               <label for="last_name">Password</label>
                             </mz-input-container>
+
+     
                             <div class="col xl4 l4 m4 s4">
                             <button class="btn waves-effect waves-light purple" type="submit" name="action">Submit
                                 <i class="material-icons right">send</i>
@@ -87,25 +89,29 @@
           <div class="text-center home-bg">
            <div class="container">
              <div class="home-form-container">
-               <div class="home-register-box" *ngIf="masterDataList">
-                 {{masterDataList.profilecreatedby | json}}
+               <div class="home-register-box" *ngIf="masterDataList && registerForm">                
                 <form  class="f_left_full_width" [formGroup]="registerForm" (ngSubmit)="Submit(registerForm.value, registerForm.valid)" novalidate > 
                   <div class="row home_register_row">    
-                      <mz-select-container>
-                          <select mz-select formControlName="createdby"
+                    <h3 *ngIf="message">{{message}}</h3>
+                    <mat-form-field>
+                      <mat-select placeholder="Favorite food">
+                          <mat-option *ngFor="let list of masterDataList.profilecreatedby" [value]="list.value">
+                              {{list.viewValue}}
+                            </mat-option>
+                        <!-- <mat-option *ngFor="let food of foods" [value]="food.value">
+                          {{ food.viewValue }}
+                        </mat-option> -->
+                      </mat-select>
+                    </mat-form-field>
+                      <!-- <mz-select-container>
+                          <select mz-select formControlName="createdby" name="createdby"
                             id="options-select"
                             [label]="'Label'"
-                            [placeholder]="'Placeholder'"
-                          >
-                            <optgroup label="Group 1">
-                              <option data-icon="assets/select-icon-1.jpg" class="left circle">Option 1</option>
-                              <option data-icon="assets/select-icon-2.jpg" class="left circle">Option 2</option>
-                            </optgroup>
-                            <optgroup label="Group 2">
-                              <option data-icon="assets/select-icon-3.jpg" class="left circle">Option 3</option>
-                            </optgroup>
+                            [placeholder]="'Placeholder'">                           
+                              <option class="left circle">Option 1</option>
+                              <option class="left circle">Option 2</option>    
                           </select>
-                        </mz-select-container>                  
+                        </mz-select-container>                   -->
                       <!-- <mz-select-container>
                           <select mz-select id="r-select-createdby" [label]="'Profile Created By'"  [placeholder]="'Created By'" formControlName="createdby">                            
                               <option *ngFor="let created of masterDataList.profilecreatedby" [ngValue]="created.value">{{created.viewValue}}</option>
@@ -252,9 +258,9 @@
                   </mz-input-container> -->
         
         
-                  <div class="home-register-submit-btn flex-center">
+                  <!-- <div class="home-register-submit-btn flex-center">
                         <button [disabled]="!registerForm.valid"  class="" md-raised-button color="warn">Submit</button>
-                  </div>      
+                  </div>       -->
                       </div> 
                 
                 </form> 

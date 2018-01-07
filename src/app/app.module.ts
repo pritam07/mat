@@ -11,6 +11,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import {AngularFireDatabaseModule} from 'angularfire2/database'
 import { appRouter } from './app.router';
 import { MzButtonModule, MzInputModule, MzValidationModule, MzSelectModule, MzToastModule } from 'ng2-materialize';
+import {MatButtonModule, MatCheckboxModule, MatSelectModule} from '@angular/material';
 import { Md2Module }  from 'md2'; 
 import { environment } from '../environments/environment';
 import { HomeComponent } from './home/home.component';
@@ -19,7 +20,7 @@ import { CommonComponent } from './common/common.component';
 import {ApiService} from './services/api.service';
 import {CommonService} from './services/common.service';
 import { NgProgressModule } from '@ngx-progressbar/core';
-
+import {HttpModule} from '@angular/http';
 export const firebaseConfig = {
   apiKey: "AIzaSyDOC4RkRcduJRUcswEfjjvDvtJ-tnPZeno",
   authDomain: "matapp-e8a3c.firebaseapp.com",
@@ -44,9 +45,11 @@ export const firebaseConfig = {
     AngularFireAuthModule,
     AngularFireDatabaseModule,
     [MzButtonModule, MzInputModule, MzValidationModule, MzSelectModule, MzToastModule],
-    Md2Module,
+    [MatSelectModule, MatButtonModule, MatCheckboxModule],
+    
     NgProgressModule.forRoot(),
     appRouter,
+    HttpModule,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [CommonService, ApiService],
