@@ -32,3 +32,8 @@ nav a  {
 .nav-form input {
     border-bottom: 1px solid #9e9e9e !important;
 }
+.angular-material-input-border input, .angular-material-input-border input:focus {
+    border-bottom: 0px !important;
+    height: inherit !important;
+    box-shadow: none !important;
+}

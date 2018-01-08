@@ -11,7 +11,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import {AngularFireDatabaseModule} from 'angularfire2/database'
 import { appRouter } from './app.router';
 import { MzButtonModule, MzInputModule, MzValidationModule, MzSelectModule, MzToastModule } from 'ng2-materialize';
-import {MatButtonModule, MatCheckboxModule, MatSelectModule} from '@angular/material';
+import {MatButtonModule, MatCheckboxModule, MatSelectModule, MatInputModule} from '@angular/material';
 import { Md2Module }  from 'md2'; 
 import { environment } from '../environments/environment';
 import { HomeComponent } from './home/home.component';
@@ -45,8 +45,7 @@ export const firebaseConfig = {
     AngularFireAuthModule,
     AngularFireDatabaseModule,
     [MzButtonModule, MzInputModule, MzValidationModule, MzSelectModule, MzToastModule],
-    [MatSelectModule, MatButtonModule, MatCheckboxModule],
-    
+    [MatSelectModule, MatButtonModule, MatCheckboxModule, MatInputModule],    
     NgProgressModule.forRoot(),
     appRouter,
     HttpModule,
